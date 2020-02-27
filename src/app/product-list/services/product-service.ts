@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ProductModel } from './product-model';
+import { ProductModel } from 'src/app/shared/models/product-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
+  constructor() { }
   getProducts():ProductModel[]
   {
     let result:ProductModel[]  = [
@@ -15,5 +15,4 @@ export class ProductService {
     ]
     return result;
   }
-  constructor() { }
 }

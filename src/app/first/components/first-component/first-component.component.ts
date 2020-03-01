@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryEnum } from 'src/app/first/enums/category-enum.enum';
-import { ProductComponent } from 'src/app/first/components/product-component/product.component';
-import { ProductListComponent } from 'src/app/first/components/product-list-component/product-list.component';
 
 @Component({
   selector: 'app-first-component',

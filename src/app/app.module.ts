@@ -10,14 +10,14 @@ import { AppMaterialModule } from './app.material.module';
 @NgModule({
   declarations: [
     AppComponent,
-    FirstModule,
     CartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    AppMaterialModule
+    AppMaterialModule,
+    FirstModule
   ],
   providers: [],
   bootstrap: [AppComponent]

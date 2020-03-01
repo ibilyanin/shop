@@ -1,4 +1,7 @@
-<mat-card>
+<h1 style="margin: 0 auto; width: 180px; margin-top: 50px;">Cart component</h1>
+<mat-divider style="margin: 0 auto; width: 180px; margin-top: 5px;"></mat-divider>
+<div style="margin-top: 100px;">
+<mat-card style="width: 500px; margin: 0 auto;">
     <mat-card-header>
         <mat-card-title>Add new product to bag</mat-card-title>
     </mat-card-header>
@@ -35,7 +38,7 @@
         <button  (click)="addProductToBag()" mat-raised-button color="primary">Add product to bag</button> <br>
     </mat-card-content>
 </mat-card>
-<mat-card style="width: 300; height: 300; marging: 50">
+<mat-card style="width: 500px; margin: 0 auto; margin-top: 50px;">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>Bag Preview</mat-card-title>
@@ -44,7 +47,7 @@
         <div>
             <div *ngIf="products.length>0; else elseBlock">      
                 <div *ngFor="let product of products">
-                        <span>{{product.name}}   {{product.description}}   {{product.price}}</span>
+                    Name:{{product.name}} Description:{{product.description}} Price:{{product.price}}
                 </div><br>
                 <button  (click)="clearBag()" mat-raised-button color="primary">Clear bag</button>
             </div>
@@ -52,4 +55,4 @@
         </div>
     </mat-card-content>
 </mat-card>
-
+</div>

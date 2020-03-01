@@ -8,7 +8,7 @@ export class ProductComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
   }
-  onBuy(){
+  onBuy() {
     console.log('Smoe text in console');
     }
 }

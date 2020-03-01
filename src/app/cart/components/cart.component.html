@@ -1,22 +1,55 @@
-<body>
-<H2>Add new product to bag</H2>
-<div>
-    <div><input type="text" [(ngModel)]="newproduct.name" placeholder="name:"/></div>
-    <div><input type="text" [(ngModel)]="newproduct.description" placeholder="description:"/></div>
-    <div><input type="text" [(ngModel)]="newproduct.price" placeholder="price:"/></div>
-</div>
-<button  (click)="addProductToBag()">Add product to bag</button> <br>
-<button  (click)="clearBag()">Clear bag</button>
-
-
-<h2>My Bag</h2>
-<div *ngIf="products.length>0; else elseBlock">
-    <div *ngFor="let product of products">
-            <span>{{product.name}}</span> 
-            <span>{{product.description}}</span>
-            <span>{{product.price}}</span>
-    </div>
-</div>
-<ng-template #elseBlock>The bag is empty.</ng-template>
-</body>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Add new product to bag</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Name</mat-label>
+                    <input matInput [(ngModel)]="newproduct.name">
+                    <button mat-button *ngIf="newproduct.name" matSuffix mat-icon-button aria-label="Clear" (click)="newproduct.name=''">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <input matInput [(ngModel)]="newproduct.description">
+                    <button mat-button *ngIf="newproduct.description" matSuffix mat-icon-button aria-label="Clear" (click)="newproduct.description=''">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Price</mat-label>
+                    <input matInput [(ngModel)]="newproduct.price">
+                    <button mat-button *ngIf="newproduct.price" matSuffix mat-icon-button aria-label="Clear" (click)="newproduct.price=null">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                  </mat-form-field>
+            </div>
+        </div>
+        <button  (click)="addProductToBag()" mat-raised-button color="primary">Add product to bag</button> <br>
+    </mat-card-content>
+</mat-card>
+<mat-card style="width: 300; height: 300; marging: 50">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Bag Preview</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div>
+            <div *ngIf="products.length>0; else elseBlock">      
+                <div *ngFor="let product of products">
+                        <span>{{product.name}}   {{product.description}}   {{product.price}}</span>
+                </div><br>
+                <button  (click)="clearBag()" mat-raised-button color="primary">Clear bag</button>
+            </div>
+            <ng-template #elseBlock>The bag is empty.</ng-template>
+        </div>
+    </mat-card-content>
+</mat-card>
 

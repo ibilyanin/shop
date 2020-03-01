@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
-import { ProductModel } from 'src/app/shared/models/product-model'
-import { Observable, of } from 'rxjs';
+import { ProductModel } from 'src/app/cart/models/product-model';
+import { AppMaterialModule } from 'src/app/app.material.module';
 
 @Component({
   selector: 'app-cart',
@@ -9,22 +9,20 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  products:ProductModel[]; 
+  products: ProductModel[];
   newproduct: ProductModel;
-  constructor(private cartService:CartService) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.products = this.cartService.getProductsFromBag();
-    this.newproduct = {name:null, description:null, price:null};
+    this.newproduct = {name: null, description: null, price: null};
   }
 
-  public addProductToBag()
-  {
+  public addProductToBag() {
       this.cartService.addProductToBag(this.newproduct);
   }
 
-  public clearBag()
-  {
+  public clearBag() {
     this.cartService.clearBag();
   }
 

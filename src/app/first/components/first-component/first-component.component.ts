@@ -17,7 +17,7 @@ export class FirstComponentComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.name='Product name';
+    this.name = 'Product name';
     this.description = 'Produect description';
     this.price = 10;
     this.category = CategoryEnum.ThirdCategory;

@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
   constructor() { }
+
   ngOnInit(): void {
   }
+
   onBuy() {
     console.log('Smoe text in console');
     }

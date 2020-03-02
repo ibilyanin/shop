@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 import { ProductService } from 'src/app/first/services/product-service';
 import { FirstProductModel } from 'src/app/first/models/first-product-model';
 @Component({
@@ -9,7 +9,7 @@ import { FirstProductModel } from 'src/app/first/models/first-product-model';
 })
 export class ProductListComponent implements OnInit {
   Products: FirstProductModel[];
-  
+
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {

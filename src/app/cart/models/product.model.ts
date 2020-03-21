@@ -3,3 +3,4 @@ export class ProductModel {
     description: string;
     price: number;
 }
+// В названии файла тип сущности отделяем точкой

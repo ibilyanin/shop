@@ -3,3 +3,4 @@ export interface FirstProductModel {
     description: string;
     price: number;
 }
+// В названии файла тип сущности отделяется через точку

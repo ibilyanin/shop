@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from 'src/app/first/services/product-service';
-import { FirstProductModel } from 'src/app/first/models/first-product-model';
+import { FirstProductModel } from 'src/app/first/models/first-product.model';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  Products: FirstProductModel[];
+  // название свойства должно быть в нижнем регистре
+  products: FirstProductModel[];
 
   constructor(private productService: ProductService) { }
 
@@ -17,7 +18,7 @@ export class ProductListComponent implements OnInit {
   }
 
   public getProducts(): void {
-    this.Products = this.productService.getProducts();
+    this.products = this.productService.getProducts();
   }
 
 }

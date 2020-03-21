@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ProductModel } from 'src/app/cart/models/product-model';
+import { ProductModel } from 'src/app/cart/models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private bag: ProductModel[];
+  private bag: ProductModel[] = []; // инициализация может быть тут вместо конструктора
 
   constructor() {
-    this.bag = [];
+    // this.bag = [];
   }
 
   public addProductToBag(product: ProductModel) {

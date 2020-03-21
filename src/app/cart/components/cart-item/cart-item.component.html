@@ -1,0 +1,13 @@
+   <div ngClass="cart-item">
+   <p style="display: inline-block; width:500px; margin-left: 20px;"> 
+      <span>Name: {{currentCartItem.productName}}</span>
+      <span> Price: {{currentCartItem.productPrice}}$</span>
+      <span>Quantity: {{currentCartItem.quantity}} </span>
+      <span>Total price: {{currentCartItem.quantity*currentCartItem.productPrice}}$</span>
+    </p>
+    <button mat-icon-button (click)="incrementCartItemCountHandler()" style="display: inline;"><mat-icon >add</mat-icon></button>
+    <button mat-icon-button (click)="decrementCartItemCountHandler()" style="display: inline;"><mat-icon>remove</mat-icon></button>
+    <button mat-icon-button (click)="deleteButtonClickHandler()" style="display: inline;"><mat-icon>delete</mat-icon></button>
+  </div>
+  <mat-divider></mat-divider>
+    

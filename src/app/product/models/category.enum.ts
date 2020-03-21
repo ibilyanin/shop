@@ -1,4 +1,4 @@
-export enum CategoryEnum {
+export enum Category {
     FirstCategory = 'First Category',
     SecondCategory = 'Second Category',
     ThirdCategory = 'Third Category',

@@ -1,0 +1,11 @@
+ <div>
+
+  <div style="display: inline-block; width: 500px;">
+    <div matLine>Name: {{product.name}}</div>
+    <div matLine>Description: {{product.description}}</div>
+    <div matLine> Price: {{product.price}} </div>
+    <div matLine> Category: {{product.category}}</div>
+  </div>
+  
+<button mat-icon-button [disabled]="!product?.available" (click)="addProduct()" style="display:  inline-block;"><mat-icon>add_shopping_cart</mat-icon></button>
+</div>

@@ -1,0 +1,6 @@
+<div>
+    <h2>Product list</h2>
+    <app-product *ngFor="let productModel of getProducts()" [product]="productModel" (add)="onAdd($event)">
+        Add to cart 
+    </app-product>
+</div>

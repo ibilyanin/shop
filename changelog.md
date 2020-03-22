@@ -7,3 +7,13 @@
 7. Added CartService with methods: addProductToBag, clearBag, getProductsFromBag
 8. Added on cart componnent part wich add new product
 9. Added on cart componnent pert wich show products in bag
+
+--
+
+10. redesigned and ProductListComponent
+11. deleted first component module
+12. designed CartListComponent.
+13. designed СartItemComponent.
+14. designed CartService.
+15. added #appTitle to AppComponent 
+16. added HighlightBackgroundDirective

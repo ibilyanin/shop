@@ -28,8 +28,8 @@ export class CartService {
     this.cart.lastUpdate = new Date();
     let totalCount = 0;
     let totalAmount = 0;
-    this.cart.buyedItems.forEach(x=> 
-      { totalCount += x.quantity; totalAmount += x.quantity*x.product.price });
+    this.cart.buyedItems.forEach(x => {
+      totalCount += x.quantity; totalAmount += x.quantity * x.product.price; });
     this.cart.totalAmount = totalAmount;
     this.cart.totalCount = totalCount;
   }
@@ -44,7 +44,7 @@ export class CartService {
   }
 
   public removeProduct(product: ProductModel) {
-    const currentItemIndex = this.cart.buyedItems.findIndex(x=>x.product.id === product.id);
+    const currentItemIndex = this.cart.buyedItems.findIndex(x => x.product.id === product.id);
     if (currentItemIndex == null) {
       return;
     }
@@ -68,7 +68,7 @@ export class CartService {
     this.cart.buyedItems.splice(0, this.cart.buyedItems.length);
     this.updateCartData();
   }
-  
+
   public changeItemCount(cartItem: CartItemModel, count: number) {
     const searchItem = this.cart.buyedItems.find(x => x.product.id === cartItem.product.id);
     if (searchItem != null) {

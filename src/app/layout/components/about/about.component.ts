@@ -23,16 +23,17 @@ export class AboutComponent implements OnInit {
   generatedValue: string;
   login: string;
 
-  constructor(@Host() @Optional() private configService: ConfigOptionsService,
-  private constantService: ConstantsService,
-  @Inject(GENERATOR_VALUE) private generator: string) { }
+  constructor(
+    @Host() @Optional() private configService: ConfigOptionsService,
+    private constantService: ConstantsService,
+    @Inject(GENERATOR_VALUE) private generator: string) { }
 
   ngOnInit(): void {
-    if(this.configService) {
-      this.configService.setConfig(new ConfigModel(1,'login', 'email@email.com'));
+    if (this.configService) {
+      this.configService.setConfig(new ConfigModel(1, 'login', 'email@email.com'));
       this.login = this.configService.getConfig().login;
     }
-    
+
     this.constant = this.constantService.getAppValue();
     this.generatedValue = this.generator;
   }

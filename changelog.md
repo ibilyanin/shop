@@ -27,3 +27,4 @@
 21. add GeneratorService
 22. add component AboutComponent
 23. add directive sharedClick which change font size
+

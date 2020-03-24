@@ -1,15 +1,8 @@
-import { Guid } from 'guid-typescript';
+import { ProductModel } from '../../product/models/product.model';
 
 export class CartItemModel {
-    productId: Guid;
-    productName: string;
-    productPrice: number;
-    quantity: number;
-
-    constructor(productId: Guid, quantity: number, productName: string, productPrice: number) {
-        this.productId = productId;
-        this.quantity = quantity;
-        this.productName = productName;
-        this.productPrice = productPrice;
+    constructor(
+        public product: ProductModel,
+        public quantity: number) {
+        }
     }
-}

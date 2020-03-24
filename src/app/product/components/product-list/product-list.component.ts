@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ProductModel } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../../cart/services/cart.service';
@@ -11,7 +11,7 @@ import { CartService } from '../../../cart/services/cart.service';
 export class ProductListComponent implements OnInit {
   private products: ProductModel[];
 
-  constructor(private productService: ProductService, private cartService: CartService) {  }
+  constructor(private productService: ProductService, private cartService: CartService, private cdr: ChangeDetectorRef) {  }
 
   ngOnInit(): void {
     this.products = this.productService.getProducts();
@@ -23,7 +23,8 @@ export class ProductListComponent implements OnInit {
 
   public onAdd(product: ProductModel) {
     product.available = false;
-    this.cartService.addProductToCart(product);
+    this.cartService.addProduct(product, 1);
+    this.cdr.detectChanges();
   }
 
 

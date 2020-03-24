@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CartModel } from '../../models/cart.model';
 import { CartItemModel } from '../../models/cart-item.model';
 import { CartService } from '../../services/cart.service';
@@ -6,10 +6,10 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-cart-list',
   templateUrl: './cart-list.component.html',
-  styleUrls: ['./cart-list.component.css']
 })
 export class CartListComponent implements OnInit {
-public cart: CartModel;
+  public cart: CartModel;
+
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
@@ -17,19 +17,14 @@ public cart: CartModel;
   }
 
   onDeleteCartItem(value: CartItemModel) {
-    this.cartService.removeProductFromCart(value.productId);
+    this.cartService.removeProduct(value.product);
   }
 
-  onChangeCount(value: CartItemModel) {
-    this.cartService.changeItemCount(value.productId, value.quantity);
+  onIncreaseCartItemCount(value: CartItemModel) {
+    this.cartService.increaseQuantity(value.product, 1);
   }
 
-  getTotal(): number {
-    let sum = 0;
-    for (const item of this.cart.buyedItems) {
-      sum += item.quantity * item.productPrice;
-    }
-    return sum;
+  onDecreaseCartItemCount(value: CartItemModel) {
+    this.cartService.decreaseQuantity(value.product, 1);
   }
-
 }

@@ -1,18 +1,20 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CartItemModel } from '../../models/cart-item.model';
 import { CartService } from '../../services/cart.service';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
-  styleUrls: ['./cart-item.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartItemComponent implements OnInit {
   @Input() currentCartItem: CartItemModel;
+  currentCartItem$ = new BehaviorSubject(this.currentCartItem);
 
-  @Output() deleteCartItem = new EventEmitter<CartItemModel>();
-  @Output() changeCount = new EventEmitter<CartItemModel>();
+  @Output() delete = new EventEmitter<CartItemModel>();
+  @Output() increase = new EventEmitter<CartItemModel>();
+  @Output() decrease = new EventEmitter<CartItemModel>();
 
 
   constructor(private cartService: CartService) {  }
@@ -20,25 +22,21 @@ export class CartItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteButtonClickHandler() {
-    console.log('Cart item delete: ' + this.currentCartItem.productId);
-    this.deleteCartItem.emit(this.currentCartItem);
+  deleteHandler() {
+    this.delete.emit(this.currentCartItem);
   }
 
-  incrementCartItemCountHandler() {
-    console.log('Cart item increment: ' + this.currentCartItem.quantity);
-    this.currentCartItem.quantity++;
-    this.changeCount.emit(this.currentCartItem);
+  increaseHandler() {
+    this.increase.emit(this.currentCartItem);
+    this.currentCartItem$.next(this.currentCartItem);
   }
 
-  decrementCartItemCountHandler() {
-    this.currentCartItem.quantity--;
-    if (this.currentCartItem.quantity < 1) {
-      console.log('Cart item delete: ' + this.currentCartItem.productId);
-      this.deleteCartItem.emit(this.currentCartItem);
+  decreaseHandler() {
+    if (this.currentCartItem.quantity <= 1) {
+      this.delete.emit(this.currentCartItem);
     }
-    console.log('Cart item decrement: ' + this.currentCartItem.quantity);
-    this.changeCount.emit(this.currentCartItem);
+    this.decrease.emit(this.currentCartItem);
+    this.currentCartItem$.next(this.currentCartItem);
   }
 
 }

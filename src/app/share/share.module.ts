@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HighlightBackgroundDirective } from './highlight-background.directive';
+import { HighlightBackgroundDirective } from './directives/highlight-background.directive';
+import { SharedClickDirective } from './directives/shared-click.directive';
 
 
 
 @NgModule({
-  declarations: [HighlightBackgroundDirective],
+  declarations: [HighlightBackgroundDirective, SharedClickDirective],
   exports: [
-    HighlightBackgroundDirective
+    HighlightBackgroundDirective,
+    SharedClickDirective
   ],
   imports: [
     CommonModule

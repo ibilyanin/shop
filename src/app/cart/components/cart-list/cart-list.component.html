@@ -3,10 +3,10 @@
 <div *ngIf="cart.buyedItems.length then cartItemList else emptyCart"></div>
 <ng-template #cartItemList>
     <div *ngFor="let cartItem of cart.buyedItems">
-      <app-cart-item appHighlightBackground  [currentCartItem] = "cartItem" (deleteCartItem)="onDeleteCartItem($event)" 
-      (changeCount) = "onChangeCount($event)"></app-cart-item>
+      <app-cart-item appHighlightBackground [currentCartItem] = "cartItem" (delete)="onDeleteCartItem($event)" 
+      (increase) = "onIncreaseCartItemCount($event)" (decrease) = "onDecreaseCartItemCount($event)"></app-cart-item>
     </div>
-    <div>Total: {{getTotal()}}$</div>
+    <div>Total: {{cart.totalAmount}}$</div>
 </ng-template>
 <ng-template #emptyCart>
     <h3>Cart is empty</h3>

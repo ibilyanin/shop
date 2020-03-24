@@ -6,7 +6,7 @@ import { SharedClickDirective } from './directives/shared-click.directive';
 
 
 @NgModule({
-  declarations: [HighlightBackgroundDirective],
+  declarations: [HighlightBackgroundDirective, SharedClickDirective],
   exports: [
     HighlightBackgroundDirective,
     SharedClickDirective

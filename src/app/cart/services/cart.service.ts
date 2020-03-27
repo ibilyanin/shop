@@ -14,6 +14,7 @@ export class CartService {
     this.cart = new CartModel();
   }
 
+  // почему нет типа параметра? У вас же есть модель
   private addNewProduct(product): CartItemModel {
     const item = new CartItemModel(product, 0);
     this.cart.buyedItems.push(item);
@@ -28,8 +29,12 @@ export class CartService {
     this.cart.lastUpdate = new Date();
     let totalCount = 0;
     let totalAmount = 0;
+
     this.cart.buyedItems.forEach(x => {
-      totalCount += x.quantity; totalAmount += x.quantity * x.product.price; });
+      totalCount += x.quantity;
+      totalAmount += x.quantity * x.product.price;
+    });
+
     this.cart.totalAmount = totalAmount;
     this.cart.totalCount = totalCount;
   }
@@ -50,7 +55,7 @@ export class CartService {
     }
     this.cart.buyedItems.splice(currentItemIndex, 1);
     this.updateCartData();
-    product.available = true;
+    product.available = true; // не очень хорошо, внутри метода менять то, что ему передается на вход
   }
 
   public increaseQuantity(product: ProductModel, count: number) {

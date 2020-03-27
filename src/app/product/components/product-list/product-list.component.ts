@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit {
   public onAdd(product: ProductModel) {
     product.available = false;
     this.cartService.addProduct(product, 1);
-    this.cdr.detectChanges();
+    this.cdr.detectChanges(); // разве это надо тут? 
   }
 
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
+// это обычный класс, не сервис, его не надо регистрировать, он зарегистрирован в about компоненте
 export class ConstantsService {
 
   private constApp = 'TaskManager';

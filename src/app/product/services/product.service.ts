@@ -28,6 +28,6 @@ export class ProductService {
   }
 
   makeAvailable(productId: Guid) {
-    products.find(x => x.id === productId).available = true;
+    products.find(x => x.id === productId).available = true; // так опасно, find может вернуть undefined
   }
 }

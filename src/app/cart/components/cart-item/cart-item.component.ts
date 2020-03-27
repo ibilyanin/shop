@@ -10,14 +10,14 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class CartItemComponent implements OnInit {
   @Input() currentCartItem: CartItemModel;
-  currentCartItem$ = new BehaviorSubject(this.currentCartItem);
+  // currentCartItem$ = new BehaviorSubject(this.currentCartItem); // не понял, для чего он тут
 
   @Output() delete = new EventEmitter<CartItemModel>();
   @Output() increase = new EventEmitter<CartItemModel>();
   @Output() decrease = new EventEmitter<CartItemModel>();
 
 
-  constructor(private cartService: CartService) {  }
+ // constructor(private cartService: CartService) {  }
 
   ngOnInit(): void {
   }
@@ -28,7 +28,7 @@ export class CartItemComponent implements OnInit {
 
   increaseHandler() {
     this.increase.emit(this.currentCartItem);
-    this.currentCartItem$.next(this.currentCartItem);
+    // this.currentCartItem$.next(this.currentCartItem);
   }
 
   decreaseHandler() {
@@ -36,7 +36,7 @@ export class CartItemComponent implements OnInit {
       this.delete.emit(this.currentCartItem);
     }
     this.decrease.emit(this.currentCartItem);
-    this.currentCartItem$.next(this.currentCartItem);
+    // this.currentCartItem$.next(this.currentCartItem);
   }
 
 }

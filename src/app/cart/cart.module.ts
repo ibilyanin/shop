@@ -7,7 +7,7 @@ import { ShareModule } from '../share/share.module';
 
 @NgModule({
   declarations: [CartListComponent, CartItemComponent],
-  exports: [CartListComponent, CartItemComponent],
+  exports: [CartListComponent],
   imports: [CommonModule, AppMaterialModule, ShareModule]
 })
 export class CartModule { }

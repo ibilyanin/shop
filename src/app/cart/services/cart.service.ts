@@ -14,7 +14,7 @@ export class CartService {
     this.cart = new CartModel();
   }
 
-  private addNewProduct(product): CartItemModel {
+  private addNewProduct(product: ProductModel): CartItemModel {
     const item = new CartItemModel(product, 0);
     this.cart.buyedItems.push(item);
     return item;
@@ -28,8 +28,11 @@ export class CartService {
     this.cart.lastUpdate = new Date();
     let totalCount = 0;
     let totalAmount = 0;
+
     this.cart.buyedItems.forEach(x => {
-      totalCount += x.quantity; totalAmount += x.quantity * x.product.price; });
+      totalCount += x.quantity;
+      totalAmount += x.quantity * x.product.price;
+    });
     this.cart.totalAmount = totalAmount;
     this.cart.totalCount = totalCount;
   }
@@ -50,7 +53,7 @@ export class CartService {
     }
     this.cart.buyedItems.splice(currentItemIndex, 1);
     this.updateCartData();
-    product.available = true;
+    this.productService.makeAvailable(product.id);
   }
 
   public increaseQuantity(product: ProductModel, count: number) {

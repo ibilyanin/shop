@@ -6,7 +6,7 @@ import { AppMaterialModule } from '../app.material.module';
 
 @NgModule({
   declarations: [ProductListComponent, ProductComponent],
-  exports: [ProductListComponent, ProductComponent],
+  exports: [ProductListComponent],
   imports: [CommonModule, AppMaterialModule]
 })
 export class ProductModule { }

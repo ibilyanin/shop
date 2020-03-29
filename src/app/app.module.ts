@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CartModule } from './cart/cart.module';
 import { ProductModule} from './product/product.module';
 import { AboutComponent } from './layout/components/about/about.component';
+import { ShareModule } from './share/share.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AboutComponent } from './layout/components/about/about.component';
     BrowserAnimationsModule,
     AppMaterialModule,
     CartModule,
-    ProductModule
+    ProductModule,
+    ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]

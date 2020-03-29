@@ -11,7 +11,7 @@ import { CartService } from '../../../cart/services/cart.service';
 export class ProductListComponent implements OnInit {
   private products: ProductModel[];
 
-  constructor(private productService: ProductService, private cartService: CartService, private cdr: ChangeDetectorRef) {  }
+  constructor(private productService: ProductService, private cartService: CartService) {  }
 
   ngOnInit(): void {
     this.products = this.productService.getProducts();
@@ -24,7 +24,6 @@ export class ProductListComponent implements OnInit {
   public onAdd(product: ProductModel) {
     product.available = false;
     this.cartService.addProduct(product, 1);
-    this.cdr.detectChanges();
   }
 
 

@@ -15,7 +15,6 @@ import { LocalStorageService } from 'src/app/core/services/loacal-storage.servic
       {provide: GENERATOR_VALUE, useFactory: GeneratorFactory(50), deps: [GeneratorService]},
       {provide: ConstantsService, useValue: constServiceInstance},
       {provide: localStorage, useClass: LocalStorageService },
-//      {provide: ConfigOptionsService, useClass: ConfigOptionsService }
   ]
 })
 export class AboutComponent implements OnInit {
@@ -37,5 +36,4 @@ export class AboutComponent implements OnInit {
     this.constant = this.constantService.getAppValue();
     this.generatedValue = this.generator;
   }
-
 }

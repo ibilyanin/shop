@@ -28,6 +28,9 @@ export class ProductService {
   }
 
   makeAvailable(productId: Guid) {
-    products.find(x => x.id === productId).available = true;
+    const product =  products.find(x => x.id === productId);
+    if (product != null) {
+      product.available = true;
+    }
   }
 }

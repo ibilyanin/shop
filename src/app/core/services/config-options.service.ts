@@ -14,6 +14,6 @@ export class ConfigOptionsService {
   }
 
   setConfig(config: ConfigModel): void {
-    this.config = config;
+    this.config = {...this.config, ...config};
   }
 }

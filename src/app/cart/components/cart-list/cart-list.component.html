@@ -1,16 +1,28 @@
-<div>
-<h1>Cart:</h1>
-<div *ngIf="cart.buyedItems.length then cartItemList else emptyCart"></div>
-<ng-template #cartItemList>
-    <div *ngFor="let cartItem of cart.buyedItems">
+<div class="panel panel-default">
+  <div class="panel-heading">Cart component:</div>
+  <div class="panel-body">
+  <div *ngIf="cart.buyedItems.length then cartItemList else emptyCart"></div>
+  <ng-template #cartItemList>
+    <mat-form-field>
+      <mat-label>Select Order Property</mat-label>
+      <mat-select [(value)]="orderProperty">
+        <mat-option>None</mat-option>
+        <mat-option value="product.name">Name</mat-option>
+        <mat-option value="product.price">Price</mat-option>
+        <mat-option value="quantity">Quantity</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br><mat-checkbox [(ngModel)]="reverse" style="font-weight: normal;">Reverse</mat-checkbox>
+    <mat-divider ></mat-divider>
+    <div *ngFor="let cartItem of (cart.buyedItems|orderByProperty: orderProperty: reverse)">
       <app-cart-item appHighlightBackground [currentCartItem] = "cartItem" (delete)="onDeleteCartItem($event)" 
       (increase) = "onIncreaseCartItemCount($event)" (decrease) = "onDecreaseCartItemCount($event)"></app-cart-item>
     </div>
-    <div>Total: {{cart.totalAmount}}$</div>
-</ng-template>
-<ng-template #emptyCart>
+    <div style="margin-top: 20px;"><p><strong>Total: {{cart.totalAmount | currency:'EUR':'symbol':'4.2-2'}}</strong></p></div>
+  </ng-template>
+  <ng-template #emptyCart>
     <h3>Cart is empty</h3>
-</ng-template>
+  </ng-template>
 </div>
 
     

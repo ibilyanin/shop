@@ -28,3 +28,11 @@
 22. add component AboutComponent
 23. add directive sharedClick which change font size
 
+
+--Home task 4
+
+24. add uppercase pipe to product category in productcomponent
+25. add currency pipe to all prices in all components (productcomponent, cartitemcomponent, cartlistcomponent)
+26. add async in productlistcomponent
+27. implement OrderByPipe 
+28. add orderbypipe in productlistcomponent and cartlistcomponent

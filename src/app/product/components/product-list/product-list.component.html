@@ -1,6 +1,20 @@
-<div>
-    <h2>Product list</h2>
-    <app-product *ngFor="let productModel of getProducts()" [product]="productModel" (add)="onAdd($event)">
+<div class="panel panel-default, myCheckBox">
+  <div class="panel-heading">Product component:</div>
+  <div class="panel-body">
+    <mat-form-field>
+      <mat-select value="price" #orderPropertySelector>
+      <mat-option value="name">Name</mat-option>
+      <mat-option value="description">Description</mat-option>
+      <mat-option value="price">Price</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-checkbox #reversCheckBox style="margin-left: 20px;">Reverse</mat-checkbox>  
+  <mat-divider></mat-divider>
+  <app-product 
+    *ngFor="let productModel of (productService.getProducts() | async | orderByProperty : orderPropertySelector.value : reversCheckBox.checked)" 
+    [product]="productModel" 
+    (add)="onAdd($event)">
         Add to cart 
-    </app-product>
+  </app-product>
+  </div>
 </div>

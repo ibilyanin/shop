@@ -1,9 +1,9 @@
    <div ngClass="cart-item">
    <p style="display: inline-block; width:500px; margin-left: 20px;"> 
       <span>Name: {{currentCartItem.product.name}}</span>
-      <span> Price: {{currentCartItem.product.price}}$</span>
-      <span>Quantity: {{currentCartItem.quantity}} </span>
-      <span>Total price: {{currentCartItem.quantity*currentCartItem.product.price}}$</span>
+      <span> Price: {{currentCartItem.product.price | currency:'EUR'}}</span>
+      <span> Quantity: {{currentCartItem.quantity}} </span>
+      <span> Total price: {{currentCartItem.quantity*currentCartItem.product.price | currency:'EUR' }}</span>
     </p>
     <button mat-icon-button (click)="increaseHandler()" style="display: inline;"><mat-icon >add</mat-icon></button>
     <button mat-icon-button (click)="decreaseHandler()" style="display: inline;"><mat-icon>remove</mat-icon></button>

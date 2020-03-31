@@ -1,6 +1,11 @@
-<div>
-<p appSharedClick = "32px">about works!</p>
-<p appSharedClick = "32px">{{constant}}</p>
-<div [appSharedClick] = "'32px'">{{generatedValue}}</div>
-<p>{{login}}</p>
+<div class="panel panel-default">
+    <div class="panel-heading">About component</div>
+    <div class="panel-body">
+        <ul>
+            <li appSharedClick = "18px">Constant value: {{constant}}</li>
+            <li [appSharedClick] = "'18px'">Generated value: {{generatedValue}}</li>
+            <li appSharedClick = "18px">Login from config service: {{login}}</li>
+            <li appSharedClick = "18px">Value from storage: {{valueFromStorage}}</li>
+        </ul>
+    </div>
 </div>

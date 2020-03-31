@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { ProductModel } from '../models/product.model';
 import { Guid } from 'guid-typescript';
 import { Category } from '../models/category.enum';
+import { Observable, of, Subject, from } from 'rxjs';
 
-const products: ProductModel[]  =  [
+const PRODUCTS: ProductModel[]  =  [
   new ProductModel(Guid.create(), 'Product number 1', 'Very useful product. Is needed for everything.', 1.50,
   Category.SecondCategory, true),
   new ProductModel(Guid.create(), 'Product number 2', 'The same as product 1 but is cheapper.', 1.49,
@@ -18,19 +19,19 @@ const products: ProductModel[]  =  [
   providedIn: 'root'
 })
 export class ProductService {
-
-  getProducts(): ProductModel[] {
-    return products;
+  getProducts(): Observable<ProductModel[]> {
+    const observableArray = of(PRODUCTS);
+    return observableArray;
   }
 
-  getProduct(productId: Guid): ProductModel {
-    return products.find(x => x.id === productId);
+  getProduct(productId: Guid): Observable<ProductModel> {
+    return of(PRODUCTS.find(x => x.id === productId));
   }
 
-  makeAvailable(productId: Guid) {
-    const product =  products.find(x => x.id === productId);
-    if (product != null) {
-      product.available = true;
+  setAvailable(product: ProductModel, isAvailable: boolean) {
+    const p = PRODUCTS.find(x => x === product);
+    if (p != null) {
+      product.available = isAvailable;
     }
   }
 }

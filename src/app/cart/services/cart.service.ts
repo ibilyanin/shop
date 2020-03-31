@@ -53,7 +53,7 @@ export class CartService {
     }
     this.cart.buyedItems.splice(currentItemIndex, 1);
     this.updateCartData();
-    this.productService.makeAvailable(product.id);
+    this.productService.setAvailable(product, true);
   }
 
   public increaseQuantity(product: ProductModel, count: number) {
@@ -63,7 +63,8 @@ export class CartService {
 
   public decreaseQuantity(product: ProductModel, count: number) {
     const currentItem = this.getCartItemByProduct(product);
-    currentItem.quantity = Math.max(0, currentItem.quantity - count);
+    if (currentItem.quantity <= count) { this.removeProduct(product); }
+    currentItem.quantity = currentItem.quantity - count;
     this.updateCartData();
   }
 

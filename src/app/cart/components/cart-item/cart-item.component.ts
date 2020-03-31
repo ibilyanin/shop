@@ -4,6 +4,7 @@ import { CartItemModel } from '../../models/cart-item.model';
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
+  styleUrls: ['./cart-item.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartItemComponent implements OnInit {
@@ -25,9 +26,6 @@ export class CartItemComponent implements OnInit {
   }
 
   decreaseHandler() {
-    if (this.currentCartItem.quantity <= 1) {
-      this.delete.emit(this.currentCartItem);
-    }
     this.decrease.emit(this.currentCartItem);
   }
 

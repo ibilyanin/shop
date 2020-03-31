@@ -4,7 +4,7 @@ import { ConstantsService, constServiceInstance } from './../../../core/services
 import { ConfigModel } from 'src/app/core/models/config.model';
 import { GeneratorService } from 'src/app/core/services/generator.service';
 import { GeneratorFactory, GENERATOR_VALUE } from 'src/app/core/services/generator-factory';
-import { LocalStorageService } from 'src/app/core/services/loacal-storage.service';
+import { LocalStorageService } from 'src/app/core/services/local-storage.service';
 
 @Component({
   selector: 'app-about',
@@ -14,17 +14,18 @@ import { LocalStorageService } from 'src/app/core/services/loacal-storage.servic
     GeneratorService,
       {provide: GENERATOR_VALUE, useFactory: GeneratorFactory(50), deps: [GeneratorService]},
       {provide: ConstantsService, useValue: constServiceInstance},
-      {provide: localStorage, useClass: LocalStorageService },
+      {provide: ConfigOptionsService, useClass: ConfigOptionsService},
   ]
 })
 export class AboutComponent implements OnInit {
   constant: string;
   generatedValue: string;
   login: string;
-
+  valueFromStorage: string;
   constructor(
     @Host() @Optional() private configService: ConfigOptionsService,
     private constantService: ConstantsService,
+    private localStorage: LocalStorageService,
     @Inject(GENERATOR_VALUE) private generator: string) { }
 
   ngOnInit(): void {
@@ -32,7 +33,8 @@ export class AboutComponent implements OnInit {
       this.configService.setConfig(new ConfigModel(1, 'login', 'email@email.com'));
       this.login = this.configService.getConfig().login;
     }
-
+    this.localStorage.setItem('k', 'local storage');
+    this.valueFromStorage = this.localStorage.getItem('k');
     this.constant = this.constantService.getAppValue();
     this.generatedValue = this.generator;
   }

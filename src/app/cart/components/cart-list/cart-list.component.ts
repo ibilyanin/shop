@@ -5,10 +5,13 @@ import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart-list',
+  styleUrls: ['./cart-list.component.css'],
   templateUrl: './cart-list.component.html',
 })
 export class CartListComponent implements OnInit {
   public cart: CartModel;
+  public orderProperty = 'product.price';
+  public reverse = false;
 
   constructor(private cartService: CartService) { }
 
